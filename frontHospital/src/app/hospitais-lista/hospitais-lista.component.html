@@ -1,0 +1,25 @@
+<div *ngIf="telaParaApresentar=='lista'">
+  <form #formularioTarefa="ngForm">
+    <div class="form-group">
+      <h1 class="text-center">Lista de Hospitais</h1>
+      <div class="input-group-prepend">
+        <span (click)="adicionarHospital();" class="input-group-text">
+          <i class="material-icons">add</i>
+        </span>
+      </div>
+    </div>
+    <div class="data">
+      <ul class="list-unstyled">
+        <li *ngFor="let HospitalItem of listaHospitals">{{HospitalItem.nome}}
+          <i class="material-icons" (click)="removerHospital(HospitalItem.idHospital);">delete</i>
+          <i class="material-icons" (click)="editarHospital(HospitalItem.idHospital);">edit</i>
+          <i class="material-icons" (click)="detalhar(HospitalItem.idHospital);">visibility</i>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
+
+<app-hospitais-detalhe *ngIf="telaParaApresentar=='detalhe'" [hospital]="hospitalSelecionado" [fecharDetalhe]="fecharDetalhes">
+
+</app-hospitais-detalhe>
